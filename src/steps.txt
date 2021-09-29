@@ -1,0 +1,26 @@
+1) instalar Formik (permite automatizacion de validaaciones de forms)
+npm install formik --save
+https://formik.org/docs/overview
+
+2) crear carpeta pages > Login>index.js (toma ek index.js //como un export const)
+3) include Formik _ initialValues{{ objeto}}
+el valor del name tiene q tener la misma nomenclatura entre los iniital values 
+4) include Form (de Formik)
+
+error!! me dio un error cuando agregue los <></> en el app.js y een el formik
+
+5) yup es una libreria de npm // permite generar validaciones
+https://www.npmjs.com/package/yup
+
+npm i yup
+import * from yup (trae todo lo que hay en yup bajo yup)
+esquema de validacion del formulario // validationShema
+Yup.object
+
+//validationShema : ingresar la logica de la validacion
+
+6) instalar material
+https://material-ui.com/
+
+npm install @material-ui/icons
+npm install @material-ui/core
