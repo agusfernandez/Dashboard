@@ -24,3 +24,5 @@ https://material-ui.com/
 
 npm install @material-ui/icons
 npm install @material-ui/core
+
+OJO que cambio la version de material

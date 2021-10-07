@@ -1,10 +1,24 @@
 import * as React from 'react';
 import {Formik, Form, Field, ErrorMessage} from 'formik';
 import * as Yup from 'yup';
-import Box from '@mui/material/Box';
-import TextField from '@mui/material/TextField';
+import { makeStyles } from '@material-ui/core/styles';
+import TextField from '@material-ui/core/TextField';
+import Button from '@material-ui/core/Button';
+
+import { useState } from 'react';
+// le puedo dar las propiedades que necesite
+const useStyles = makeStyles((theme) => ({
+  root: {
+    '& > *': {
+      margin: theme.spacing(1),
+      width: '25ch',
+    },
+  },
+}));
 
 export default function Login() {
+   const classes = useStyles();
+   const [passwordValidation, setpasswordValidation] = useState("");
     return (
     
         <Formik
@@ -18,18 +32,7 @@ export default function Login() {
             email:Yup.string().email('Debe ingresar un mail valido,gracias').required('El mail es obligatorio'),
             password:Yup.string().required('La contraseña es requerida').min(4, 'La contraseña debe tener al menos 4 caracteres')
         })}
-       /* validate={values => {
-         const errors = {};
-         if (!values.email) {
-           errors.email = 'El email es obligatorio';
-         } else if (
-           !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)
-         ) {
-           errors.email = 'Email invalido';
-         }
-         return errors;
-
-       }} */
+ 
 
        // cuando le demos enter ejecuta la accion que debe ejecutar y puede recibir values q son los valores q les deben pasar
        onSubmit={(values, { setSubmitting }) => {
@@ -41,16 +44,18 @@ export default function Login() {
        }}
      >
        {({ isSubmitting }) => (
-         <Form>
-            <TextField id="outlined-basic" label="Outlined" variant="outlined" />
+         <Form className={classes.root} noValidate autoComplete="off" style={{color: passwordValidation ? "red" : "blue" }}>
 
-           <Field type="email" name="email" />
+       
+           <TextField id="outlined-basic" label="Email" variant="outlined" type="email" name="email"/>
            <ErrorMessage name="email" component="div" />
-           <Field type="password" name="password" />
+           <TextField id="outlined-basic" label="Password" variant="outlined" type="password" name="password"/>
            <ErrorMessage name="password" component="div" />
-           <button type="submit" disabled={isSubmitting}>
-             Submit
-           </button>
+
+     
+           {/* <Field type="email" name="email" />
+           <Field type="password" name="password" /> */}
+           <Button type="submit" disabled={isSubmitting} variant="contained" color="primary">Enviar</Button>
            
          </Form>
        )}
