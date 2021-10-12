@@ -7,7 +7,9 @@ https://formik.org/docs/overview
 el valor del name tiene q tener la misma nomenclatura entre los iniital values 
 4) include Form (de Formik)
 
-error!! me dio un error cuando agregue los <></> en el app.js y een el formik
+error!! me dio un error cuando agregue los <></> en el app.js y een el formik (probar de sacarlos)
+
+-useFormik es un hook de formik que permite usar las validaciones de formik en otras librerias
 
 5) yup es una libreria de npm // permite generar validaciones
 https://www.npmjs.com/package/yup
@@ -26,3 +28,21 @@ npm install @material-ui/icons
 npm install @material-ui/core
 
 OJO que cambio la version de material
+
+7) import TextForm
+import Button
+import Link (new registry)
+
+8) components > LoginForm // logica del log in con el uso de Yup y Formik como principales herrramientas de 
+usar {useFormik} directamente
+
+const Formik = useFormik({
+    initalValues:{
+
+    },
+    validationSchema:Yup.object({
+
+    }),
+    onSubmit:
+
+})
