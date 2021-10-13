@@ -6,6 +6,11 @@ import * as Yup from 'yup';
 import { makeStyles } from '@material-ui/core/styles';
 import {Card, TextField, Button,  } from '@material-ui/core';
 import { useState } from 'react';
+import Visibility from '@material-ui/icons/Visibility';
+import VisibilityOff from '@material-ui/icons/VisibilityOff';
+import InputAdornment from '@material-ui/core/InputAdornment';
+import IconButton from '@material-ui/core/IconButton';
+
 
 const useStyles = makeStyles({
     root: {
@@ -30,7 +35,18 @@ const useStyles = makeStyles({
 const LoginForm =()=>{
     const classes = useStyles();
     const [passwordValidation, setpasswordValidation] = useState("");
+    //show and not show password 
+    const [values, setValues] = React.useState({
+        password: '',
+        showPassword: false,
+      });
+    const handleClickShowPassword = () => {
+        setValues({ ...values, showPassword: !values.showPassword });
+      };
 
+    const handleMouseDownPassword = (event) => {
+        event.preventDefault();
+      };
 
     //useFormik permite q otras librerias usen formik como parte de la validacions
     const formik = useFormik({
@@ -73,12 +89,26 @@ const LoginForm =()=>{
                     id= "password"
                     name="password"
                     label="Password"
+                    //type="password"
+                    type={formik.values.showPassword ? 'text' : 'password'}
                     value={formik.values.password}
                     onChange={formik.handleChange}
                     error ={formik.touched.password && Boolean(formik.errors.password)}
                     helperText= {formik.touched.password && formik.errors.password}
                     variant="outlined"
                     size="small"
+                    endAdornment={
+                        <InputAdornment position="end">
+                          <IconButton
+                            aria-label="toggle password visibility"
+                            onClick={handleClickShowPassword}
+                            onMouseDown={handleMouseDownPassword}
+                            edge="end"
+                          >
+                            {formik.values.showPassword ? <Visibility /> : <VisibilityOff />}
+                          </IconButton>
+                        </InputAdornment>
+                      }
                   />        
                 <Button
                     style={{ margin: ".3rem 0 .3rem 0" }}
