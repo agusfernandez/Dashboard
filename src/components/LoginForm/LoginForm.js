@@ -14,7 +14,7 @@ import IconButton from '@material-ui/core/IconButton';
 
 const useStyles = makeStyles({
     root: {
-      maxWidth: 600,
+      maxWidth: 500,
       padding: 30
 
     },
@@ -59,11 +59,11 @@ const LoginForm =()=>{
             .email("Ingrese un email valido")
             .required("El email es un campo requerido"),
           password: Yup.string("Enter your password")
-            .min(8, "Password should be of minimum 8 characters length")
-            .required("Password is required"),
+            .min(8, "La contraseña deberia tener un minimo de 8 caracteres")
+            .required("La contraseña es requerida"),
         }),
         onSubmit: (values) => {
-            // print los valores
+            // print los valores en un alert los valores q se envian
             alert(JSON.stringify(values, null, 2));
         },
       });

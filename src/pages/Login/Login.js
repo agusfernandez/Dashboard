@@ -1,7 +1,7 @@
 import * as React from 'react';
 import LoginForm from '../../components/LoginForm';
 import { useStyles } from "./styles";
-import { Box } from "@material-ui/core";
+import { Box, Link } from "@material-ui/core";
 
 
 
@@ -22,8 +22,17 @@ export default function Login() {
         component="div"
         className={classes.body}
       >
-      <LoginForm/>
-
+         <LoginForm/>
+          <Link
+              component="button"
+              variant="body2"
+              className={classes.link}
+              onClick={() => {
+                console.info("I'm a button.");
+              }}
+            >
+              ¿Sos nuevo? Registrate aqui
+            </Link>
       </Box>
     )
 }
