@@ -46,3 +46,7 @@ const Formik = useFormik({
     onSubmit:
 
 })
+
+>RegisterForm
+
+.matches (funcion de Yup que permite agregar expresiones regulares para una validacion)
