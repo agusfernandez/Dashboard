@@ -48,5 +48,8 @@ const Formik = useFormik({
 })
 
 >RegisterForm
-
 .matches (funcion de Yup que permite agregar expresiones regulares para una validacion)
+
+valor key // clave para imprimir una vez las cosas 
+
+<Recordar de agregar en lso forms el name, id, label>

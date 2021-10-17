@@ -53,11 +53,14 @@ const LoginForm =()=>{
         initialValues: {
           email: "",
           password: "",
+          username:"",
         },
         validationSchema: Yup.object({
           email: Yup.string("Ingrese su email")
             .email("Ingrese un email valido")
             .required("El email es un campo requerido"),
+          username:Yup.string("Ingrese su username")
+            .required("El username es requerido"),   
           password: Yup.string("Enter your password")
             .min(8, "La contraseña deberia tener un minimo de 8 caracteres")
             .required("La contraseña es requerida"),
@@ -80,6 +83,18 @@ const LoginForm =()=>{
                     onChange={formik.handleChange}
                     error ={formik.touched.email && Boolean(formik.errors.email)}
                     helperText= {formik.touched.email && formik.errors.email}
+                    variant="outlined"
+                    size="small"
+                />
+                <TextField
+                    className={classes.input}
+                    id= "username"
+                    name="username"
+                    label="username"
+                    value={formik.values.username}
+                    onChange={formik.handleChange}
+                    error ={formik.touched.username && Boolean(formik.errors.username)}
+                    helperText= {formik.touched.username && formik.errors.username}
                     variant="outlined"
                     size="small"
                 />
