@@ -4,7 +4,7 @@ import { Box } from "@material-ui/core";
 import { useStyles } from "./styles";
 
 
-const Register = () => {
+const Register = ({setUser}) => {
     const classes = useStyles();
 
     return (
@@ -19,7 +19,7 @@ const Register = () => {
              component="div"
              className={classes.body}
         >
-            <RegisterForm/>
+            <RegisterForm setUser={setUser}/>
             
         </Box>
     )

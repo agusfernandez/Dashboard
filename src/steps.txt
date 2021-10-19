@@ -48,8 +48,34 @@ const Formik = useFormik({
 })
 
 >RegisterForm
-.matches (funcion de Yup que permite agregar expresiones regulares para una validacion)
+Recordar de agregar en los forms el name, id, label>
 
+.matches (funcion de Yup que permite agregar expresiones regulares para una validacion)
 valor key // clave para imprimir una vez las cosas 
 
-<Recordar de agregar en lso forms el name, id, label>
+const Formik = useFormik({
+    initalValues:{
+
+    },
+    validationSchema:Yup.object({
+
+    }),
+    onSubmit:
+
+})
+
+//// checkbox information> guardar el estado de los datos de las persona q se acaba de registrar
+    const [interestMovies, setInterest] = useState({
+        peliculas: false,
+        series: false,
+        ambas: false,        
+        ninguna: false
+    })
+
+    // va a recibir un evento y va  setear los intereses
+    const handleCheckbox =(event) =>{
+        setInterest({...interestMovies, [event.target.name]: event.target.checked})
+    }
+guardar la info se puede hacer a traves de Redux para ser usado en otros componentes pero por ahora se puede hacer a traves de yb estado global en app.js
+Seteo el estado global y le paso la prop al page de register ( q es esta ahi mismo) // luego lo paso en Register.js y RegisterForm.js. Luego en el submite le saco la alerta y pongo el setUser
+const [user, setUser] = useState({})
