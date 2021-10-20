@@ -79,3 +79,6 @@ const Formik = useFormik({
 guardar la info se puede hacer a traves de Redux para ser usado en otros componentes pero por ahora se puede hacer a traves de yb estado global en app.js
 Seteo el estado global y le paso la prop al page de register ( q es esta ahi mismo) // luego lo paso en Register.js y RegisterForm.js. Luego en el submite le saco la alerta y pongo el setUser
 const [user, setUser] = useState({})
+
+9) Creacion de la pagina Home
+-  incoporporacion de Menu/ Drawer (funcionalidad )

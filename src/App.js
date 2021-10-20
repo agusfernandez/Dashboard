@@ -3,6 +3,7 @@ import {StrictMode} from 'react';
 import Login from './pages/Login';
 import Register from './pages/Register';
 import { useState } from 'react';
+import {Home} from './pages/Home/Home'
 
 function App() {
 
@@ -15,7 +16,9 @@ function App() {
 
     <StrictMode>
        {/*<Login/>*/}
-       <Register setUser={setUser}/>
+       {/*<Register setUser={setUser}/>*/}
+       <Home/>
+
     </StrictMode>
  
   );

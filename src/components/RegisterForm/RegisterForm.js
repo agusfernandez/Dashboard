@@ -266,7 +266,6 @@ const RegisterForm = ({setUser})=>{
                                 label="Ninguna"
                             />
                             </FormGroup>
-                            <FormHelperText>Be careful</FormHelperText>
                         </FormControl>
      
                          
