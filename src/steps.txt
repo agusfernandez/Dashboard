@@ -80,5 +80,6 @@ guardar la info se puede hacer a traves de Redux para ser usado en otros compone
 Seteo el estado global y le paso la prop al page de register ( q es esta ahi mismo) // luego lo paso en Register.js y RegisterForm.js. Luego en el submite le saco la alerta y pongo el setUser
 const [user, setUser] = useState({})
 
-9) Creacion de la pagina Home
--  incoporporacion de Menu/ Drawer (funcionalidad )
+9) Creacion de la pagina Home /intente crearlo tipo componente pero no me funciono
+-  incoporporacion de Menu/ Drawer (funcionalidad 
+)

@@ -28,7 +28,7 @@ export default function Login() {
               variant="body2"
               className={classes.link}
               onClick={() => {
-                console.info("I'm a button.");
+                console.info("boton registro.");
               }}
             >
               ¿Sos nuevo? Registrate aqui

@@ -2,9 +2,11 @@ import * as React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { useFormik} from 'formik';
 import * as Yup from 'yup';
-import {Card, TextField, Button, InputAdornment, IconButton, Visibility, VisibilityOff, MenuItem, Grid, FormControl, Checkbox, FormControlLabel, FormGroup, FormHelperText, FormLabel } from '@material-ui/core';
+import {Card, TextField, Button, InputAdornment, IconButton, MenuItem, Grid, FormControl, Checkbox, FormControlLabel, FormGroup, FormHelperText, FormLabel, OutlinedInput } from '@material-ui/core';
 import Select from '@material-ui/core/Select';
 import InputLabel from '@material-ui/core/InputLabel';
+import Visibility from '@material-ui/icons/Visibility';
+import VisibilityOff from '@material-ui/icons/VisibilityOff';
 // va entre llevaes porq directamente exporte el componente sin el default
 import { nationalities } from '../../utils/nationalities';
 import { gender } from '../../utils/gender';
@@ -47,6 +49,21 @@ const RegisterForm = ({setUser})=>{
         ninguna: false
     })
 
+    // password settings hide and ashow
+    const [passwordValidation, setpasswordValidation] = useState("");
+    //show and not show password 
+    const [values, setValues] = React.useState({
+        password: '',
+        showPassword: false,
+      });
+    const handleClickShowPassword = () => {
+        setValues({ ...values, showPassword: !values.showPassword });
+      };
+
+    const handleMouseDownPassword = (event) => {
+        event.preventDefault();
+      };
+
     // va a recibir un evento y va  setear los intereses
     const handleCheckbox =(event) =>{
         setInterest({...interestMovies, [event.target.name]: event.target.checked})
@@ -88,17 +105,17 @@ const RegisterForm = ({setUser})=>{
               //.min(8, "La contraseña deberia tener un minimo de 8 caracteres")
               .required("La contraseña es requerida"),
 
-            gender :Yup.string("Ingrese se genero")
+            gender:Yup.string("Ingrese se genero")
             .required("El genero es un campo requerido"),
             birthday: Yup.string("Ingrese su fecha de nacimiento")
               .required("La fecha de nacimiento es obligatoria"),
           }),
           onSubmit: (values) => {
             // print los valores en un alert los valores q se envian
-            //alert(JSON.stringify(values, null, 2));
+            alert(JSON.stringify(values, null, 2));
 
             //seteo el estado anterior que viene de values de formik + los intereses q traigo
-            setUser({...values, interestMovies:interestMovies})
+            //setUser({...values, interestMovies:interestMovies})
         },
     })
 
@@ -117,7 +134,6 @@ const RegisterForm = ({setUser})=>{
                                     error ={formik.touched.firstname && Boolean(formik.errors.firstname)}
                                     helperText= {formik.touched.firstname && formik.errors.firstname}
                                     variant="outlined"
-                                    size="small"
                                     spacing={4}
                                 />
                        
@@ -131,7 +147,6 @@ const RegisterForm = ({setUser})=>{
                                     error ={formik.touched.lastname && Boolean(formik.errors.lastname)}
                                     helperText= {formik.touched.lastname && formik.errors.lastname}
                                     variant="outlined"
-                                    size="small"
                                     spacing={4}
                                 />
                         </Grid>
@@ -146,7 +161,6 @@ const RegisterForm = ({setUser})=>{
                                 error ={formik.touched.username && Boolean(formik.errors.username)}
                                 helperText= {formik.touched.username && formik.errors.username}
                                 variant="outlined"
-                                size="small"
                             />
                             <TextField
                                 className={classes.input}
@@ -158,25 +172,33 @@ const RegisterForm = ({setUser})=>{
                                 error ={formik.touched.email && Boolean(formik.errors.email)}
                                 helperText= {formik.touched.email && formik.errors.email}
                                 variant="outlined"
-                                size="small"
                             />
                         </Grid>
                         <Grid item xs={12} className={classes.boxform}>
-                                <TextField
-                                    className={classes.input}
-                                    id= "password"
-                                    name="password"
-                                    label="Password"
-                                    type="password"
-                                    //type={formik.values.showPassword ? 'text' : 'password'}
-                                    value={formik.values.password}
-                                    onChange={formik.handleChange}
-                                    error ={formik.touched.password && Boolean(formik.errors.password)}
-                                    helperText= {formik.touched.password && formik.errors.password}
-                                    variant="outlined"
-                                    size="small"
-                                />
-                            <FormControl variant="outlined" className={classes.input} size="small">
+                         <FormControl  variant="outlined"  className={classes.input} >
+                            <InputLabel htmlFor="outlined-adornment-password">Password</InputLabel>
+                                        <OutlinedInput
+                                        id= "password"
+                                        name="password"
+                                        type={values.showPassword ? 'text' : 'password'}
+                                        value={formik.values.password}
+                                        onChange={formik.handleChange}
+                                        endAdornment={
+                                            <InputAdornment position="end">
+                                            <IconButton
+                                                aria-label="toggle password visibility"
+                                                onClick={handleClickShowPassword}
+                                                onMouseDown={handleMouseDownPassword}
+                                                edge="end"
+                                            >
+                                                {values.showPassword ? <Visibility /> : <VisibilityOff />}
+                                            </IconButton>
+                                            </InputAdornment>
+                                        }
+
+                                        />
+                             </FormControl>
+                            <FormControl variant="outlined" className={classes.input}>
                                 <InputLabel id="nationality">Nacionalidad</InputLabel>
                                 <Select
                                     labelId="nationality"
@@ -206,7 +228,7 @@ const RegisterForm = ({setUser})=>{
 
                          <Grid item xs={12} className={classes.boxform}>
 
-                            <FormControl variant="outlined" className={classes.input} size="small">
+                            <FormControl variant="outlined" className={classes.input}>
                                 <InputLabel id="gender">Género</InputLabel>
                                 <Select
                                     labelId="gender"
@@ -226,6 +248,7 @@ const RegisterForm = ({setUser})=>{
 
                             })}
                                 </Select>
+                                <FormHelperText >{formik.touched.gender && formik.errors.gender}</FormHelperText>
                             </FormControl>   
 
                             <TextField

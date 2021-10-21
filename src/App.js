@@ -15,8 +15,8 @@ function App() {
   return (
 
     <StrictMode>
-       {/*<Login/>*/}
-       {/*<Register setUser={setUser}/>*/}
+       {/* <Login/> */}
+       {/* <Register setUser={setUser}/> */}
        <Home/>
 
     </StrictMode>
