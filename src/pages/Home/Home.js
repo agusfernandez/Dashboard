@@ -18,7 +18,16 @@ import InboxIcon from '@material-ui/icons/MoveToInbox';
 import MailIcon from '@material-ui/icons/Mail';
 import clsx from 'clsx';
 import HomeOutlinedIcon from '@material-ui/icons/HomeOutlined';
-
+import TheatersOutlinedIcon from '@material-ui/icons/TheatersOutlined';
+import MovieCreationOutlinedIcon from '@material-ui/icons/MovieCreationOutlined';
+import ExitToAppOutlinedIcon from '@material-ui/icons/ExitToAppOutlined';
+import{
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link,
+  Redirect
+} from 'react-router-dom'
 
 const drawerWidth = 240;
 
@@ -101,7 +110,7 @@ export const Home=()=> {
             [classes.appBarShift]: open,
           })}
         >
-          <Toolbar>
+        <Toolbar>
             <IconButton
               color="inherit"
               aria-label="open drawer"
@@ -132,21 +141,25 @@ export const Home=()=> {
           </div>
           <Divider />
           <List>
-            {['Home', 'Movies', 'Series', 'Contact'].map((text, index) => (
-              <ListItem button key={text}>
-                <ListItemIcon>{index % 2 === 0 ? <HomeOutlinedIcon /> : <MailIcon />}</ListItemIcon>
-                <ListItemText primary={text} />
+              <ListItem button className={classes.listNav}>
+                <ListItemIcon><HomeOutlinedIcon /></ListItemIcon>
+                <ListItemText primary="Home" />
               </ListItem>
-            ))}
+              <ListItem button>
+                <ListItemIcon><MovieCreationOutlinedIcon /></ListItemIcon>
+                <ListItemText primary="Movies" />
+              </ListItem>
+              <ListItem button>
+                <ListItemIcon><TheatersOutlinedIcon /></ListItemIcon>
+                <ListItemText primary="Series" />
+              </ListItem>
           </List>
           <Divider />
           <List>
-            {['Log Out'].map((text, index) => (
-              <ListItem button key={text}>
-                <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-                <ListItemText primary={text} />
+              <ListItem button>
+                <ListItemIcon><InboxIcon /></ListItemIcon>
+                <ListItemText primary="Sign Out" />
               </ListItem>
-            ))}
           </List>
         </Drawer>
         <main

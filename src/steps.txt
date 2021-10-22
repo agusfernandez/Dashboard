@@ -81,5 +81,31 @@ Seteo el estado global y le paso la prop al page de register ( q es esta ahi mis
 const [user, setUser] = useState({})
 
 9) Creacion de la pagina Home /intente crearlo tipo componente pero no me funciono
--  incoporporacion de Menu/ Drawer (funcionalidad 
-)
+-  incoporporacion de Menu/ Drawer (funcionalidad)
+
+// se agrega el menu
+
+10) Routes
+npm i --save react-router-dom 
+
+import{
+    BrowserRouter as Router,
+    Switch,
+    Route,
+    Link,
+    Redirect
+} from 'react-router-dom'
+
+const Routes = ()=>{
+    return (
+        <Router>
+            <h1>Movie Dashboard</h1>
+            <Switch>
+                <Route path='/contacto'>
+                </Route>
+            </Switch>
+        </Router>
+    )
+}
+
+<Switch> cambia de "ruta"
