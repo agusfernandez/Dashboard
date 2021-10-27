@@ -28,6 +28,8 @@ import{
   Link,
   Redirect
 } from 'react-router-dom'
+// la logica del Switch va en donde esta el contenido donde se renderizaba el home
+// links donde estan los link items
 
 const drawerWidth = 240;
 
@@ -102,77 +104,102 @@ export const Home=()=> {
       setOpen(false);
     };
     return (
-        <div className={classes.root}>
-        <CssBaseline />
-        <AppBar
-          position="fixed"
-          className={clsx(classes.appBar, {
-            [classes.appBarShift]: open,
-          })}
-        >
-        <Toolbar>
-            <IconButton
-              color="inherit"
-              aria-label="open drawer"
-              onClick={handleDrawerOpen}
-              edge="start"
-              className={clsx(classes.menuButton, open && classes.hide)}
-            >
-              <MenuIcon />
-            </IconButton>
-            <Typography variant="h6" noWrap>
-              Bienvenidos
-            </Typography>
-          </Toolbar>
-        </AppBar>
-        <Drawer
-          className={classes.drawer}
-          variant="persistent"
-          anchor="left"
-          open={open}
-          classes={{
-            paper: classes.drawerPaper,
-          }}
-        >
-          <div className={classes.drawerHeader}>
-            <IconButton onClick={handleDrawerClose}>
-              {theme.direction === 'ltr' ? <ChevronLeftIcon /> : <ChevronRightIcon />}
-            </IconButton>
-          </div>
-          <Divider />
-          <List>
-              <ListItem button className={classes.listNav}>
-                <ListItemIcon><HomeOutlinedIcon /></ListItemIcon>
-                <ListItemText primary="Home" />
-              </ListItem>
-              <ListItem button>
-                <ListItemIcon><MovieCreationOutlinedIcon /></ListItemIcon>
-                <ListItemText primary="Movies" />
-              </ListItem>
-              <ListItem button>
-                <ListItemIcon><TheatersOutlinedIcon /></ListItemIcon>
-                <ListItemText primary="Series" />
-              </ListItem>
-          </List>
-          <Divider />
-          <List>
-              <ListItem button>
-                <ListItemIcon><InboxIcon /></ListItemIcon>
-                <ListItemText primary="Sign Out" />
-              </ListItem>
-          </List>
-        </Drawer>
-        <main
-          className={clsx(classes.content, {
-            [classes.contentShift]: open,
-          })}
-        >
-          <div className={classes.drawerHeader} />
-          <Typography paragraph>
-          home
-          </Typography>
 
-        </main>
-      </div>
+      <Router>
+          <div className={classes.root}>
+          <CssBaseline />
+          <AppBar
+            position="fixed"
+            className={clsx(classes.appBar, {
+              [classes.appBarShift]: open,
+            })}
+          >
+          <Toolbar>
+              <IconButton
+                color="inherit"
+                aria-label="open drawer"
+                onClick={handleDrawerOpen}
+                edge="start"
+                className={clsx(classes.menuButton, open && classes.hide)}
+              >
+                <MenuIcon />
+              </IconButton>
+              <Typography variant="h6" noWrap>
+                Bienvenidos
+              </Typography>
+            </Toolbar>
+          </AppBar>
+          <Drawer
+            className={classes.drawer}
+            variant="persistent"
+            anchor="left"
+            open={open}
+            classes={{
+              paper: classes.drawerPaper,
+            }}
+          >
+            <div className={classes.drawerHeader}>
+              <IconButton onClick={handleDrawerClose}>
+                {theme.direction === 'ltr' ? <ChevronLeftIcon /> : <ChevronRightIcon />}
+              </IconButton>
+            </div>
+            <Divider />
+            <List>
+                <ListItem button className={classes.listNav}>
+                  <ListItemIcon><HomeOutlinedIcon /></ListItemIcon>
+                    <ListItemText>                   
+                      <Link to='/' style={{color:'#000', textDecoration:'none'}}>Home</Link>
+                    </ListItemText>
+
+                </ListItem>
+                <ListItem button>
+                  <ListItemIcon><MovieCreationOutlinedIcon /></ListItemIcon>
+                     <ListItemText>                   
+                      <Link to='/movies' style={{color:'#000', textDecoration:'none'}}>Movies</Link>
+                    </ListItemText>
+                </ListItem>
+                <ListItem button>
+                  <ListItemIcon><TheatersOutlinedIcon /></ListItemIcon>
+                    <ListItemText>                   
+                        <Link to='/series' style={{color:'#000', textDecoration:'none'}}>Series</Link>
+                    </ListItemText>                
+                  </ListItem>
+            </List>
+            <Divider />
+            <List>
+                <ListItem button>
+                  <ListItemIcon><InboxIcon /></ListItemIcon>
+                  <ListItemText primary="Sign Out" />
+                </ListItem>
+            </List>
+          </Drawer>
+          <main
+            className={clsx(classes.content, {
+              [classes.contentShift]: open,
+            })}
+          >
+            <div className={classes.drawerHeader} />
+                {/* aca iba un texto que se renderizaba en el home 
+                <Typography paragraph>
+                home
+                  </Typography>*/}
+                <Switch>
+                    <Route exact path='/'>
+                      Home
+                    </Route>
+                    <Route path='/movies'>
+                       Aca van las Movies
+                    </Route>
+                    <Route path='/series'>
+                      Series
+                    </Route>
+                    <Route path='/contacto'>
+                      Contacto
+                    </Route>
+                </Switch>
+
+            </main>
+          </div>  
+      </Router>
     )
 }
