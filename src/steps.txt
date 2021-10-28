@@ -136,3 +136,24 @@ const Routes = ()=>{
 }
 
 <Switch> cambia de "ruta"
+
+11) Rutas privadas
+Se pueden crear las rutas de forma manual a traves de un componente nuevo
+// es pro o no?
+
+crear una condicion
+
+let tipodeSuscricion = 'base'
+
+  const routerPrivate=({component: Component, ...rest})=>{
+      return(
+        <Route  {...rest}>
+           {tipodeSuscricion ==='pro' ? <Component/> : <Redirect to='/' />}
+        </Route>
+      )
+    }
+ y agregarlo en el Switch y agregar el componente creado de esa ruta privada
+
+    <routerPrivate exact path='/herramientasPrivada' component={herramientasPro}> //nombre del componente creado
+        Ruta privadas
+    </routerPrivate>
