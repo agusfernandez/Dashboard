@@ -157,3 +157,32 @@ let tipodeSuscricion = 'base'
     <routerPrivate exact path='/herramientasPrivada' component={herramientasPro}> //nombre del componente creado
         Ruta privadas
     </routerPrivate>
+
+12) Redux> nos permite manejar el estado global de la app
+//estructura
+
+.store
+se guarda el estado global
+
+.actions (useReducer)
+constantes CONST 
+las actions describen que acciones se van a realizar para modificar le estado
+
+.reducer 
+describir como la accion va a cambiar el estado actual en el siguiente
+
+.dispatch
+son las formas en que se ejecutan las acciones
+
+el flujo va a ser:
+store->dispatch ->action -> reducer ->(va a modificar el estado global)
+
+
+// estructura Redux
+
+a) crear carpeta _ reducers y actions
+b) crear las actions->nuevo archivo index.js / devolviendo el objeto
+ejemplo: Guardar el estado global el logueo
+- creo las actions
+- creo los reducers
+c) crear los reducers para generar el store
