@@ -11,6 +11,8 @@ import VisibilityOff from '@material-ui/icons/VisibilityOff';
 import InputAdornment from '@material-ui/core/InputAdornment';
 import IconButton from '@material-ui/core/IconButton';
 import clsx from 'clsx';
+import { useDispatch } from 'react-redux';
+import {signIn} from '../../actions';
 
 const useStyles = makeStyles({
     root: {
@@ -48,6 +50,8 @@ const LoginForm =()=>{
         event.preventDefault();
       };
 
+    const dispatch = useDispatch()
+
     //useFormik permite q otras librerias usen formik como parte de la validacions
     const formik = useFormik({
         initialValues: {
@@ -67,7 +71,9 @@ const LoginForm =()=>{
         }),
         onSubmit: (values) => {
             // print los valores en un alert los valores q se envian
-            alert(JSON.stringify(values, null, 2));
+            // alert(JSON.stringify(values, null, 2));
+            // quiero generar una accion que cuando se envie la info me modifique el estado que se dispare una funcion
+            dispatch(signIn())
         },
       });
 
