@@ -91,7 +91,7 @@ const useStyles = makeStyles((theme) => ({
     marginLeft: 0,
   },
 }));
-export const Home=()=> {
+const Home=()=> {
     const classes = useStyles();
     const theme = useTheme();
     const [open, setOpen] = React.useState(false);
@@ -205,3 +205,5 @@ export const Home=()=> {
       </Router>
     )
 }
+
+export default Home;
