@@ -1,11 +1,23 @@
-const signIn =()=>{
+export const signIn =()=>{
         return {
             type:'SIGN_IN'
         }
 }
 
-const signOut =()=>{
+export const signOut =()=>{
     return {
         type:'SIGN_OUT'
+    }
+}
+
+export const increment =()=>{
+    return{
+        type:'INCREMENT'
+    }
+}
+
+export const decrement =()=>{
+    return{
+        type:'DECREMENT'
     }
 }
