@@ -186,3 +186,20 @@ ejemplo: Guardar el estado global el logueo
 - creo las actions
 - creo los reducers
 c) crear los reducers para generar el store
+npm install react-redux
+
+crear en la carpeta reducers el archivo de loggedReducer.js y un counterReducer.js
+en el loggedreducer le paso como parametros del reducer son el state y la action y lo mismo on el counterReducer
+en el archivo index.js que esta dentro de la carpeta reducer entonces llamomos a los reducers creados
+
+--- creacion del store: se crea en el index.js de todo el proyecto
+
+  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+y pasar el Provider con la propiedad state
+
+en app.js se agrega el {useSelector} y se hace un if ternario en donde si esta logueado se lo redirije a la home sino no
+
+en  component>loginForm> hay que ejecutar el dispatch. El dispatch va a ajecutar una accion que ejecutara la logica de mi reducer y necesito disparar esas acciones importanto useDispatch. + importar  la accion que quiero ejecutar //ejemplo signIn
+en el onSubmit de la validacion de yup del formulario // alert(JSON.stringfy(values, null, 2)) ____ en esta parte
+generar una constante useDispatch y hay que pasarle como parametro la accion que queremos ejectuar
+
